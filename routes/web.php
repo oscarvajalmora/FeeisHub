@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('enviar-rebiiu', [App\Http\Controllers\ReviewController::class, 'create'])->name('send-review.form');
+Route::get('ver/{slug}', [App\Http\Controllers\ReviewController::class, 'show'])->name('reported.details');
+
+// Internal use
+Route::post('/send-review', [App\Http\Controllers\ReviewController::class, 'store'])->name('send-review.store');
