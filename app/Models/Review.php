@@ -14,11 +14,15 @@ class Review extends Model
         'reporter_profile_link',
         'affected_name',
         'affected_profile_link',
-        'fb_group_name',
-        'fb_group_link',
         'fb_post_link',
         'feedback',
         'commentary',
-        'reported_profile_id'
+        'reported_profile_id',
+        'facebook_group_id'
     ];
+
+    public function facebookGroup(){
+        return $this->belongsTo(FacebookGroup::class);
+    }
+
 }
