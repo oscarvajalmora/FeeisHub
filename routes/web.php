@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('enviar-rebiiu', [App\Http\Controllers\ReviewController::class, 'create'])->name('send-review.form');
+Route::get('enviar-feedback', [App\Http\Controllers\ReviewController::class, 'create'])->name('send-review.form');
 Route::get('ver/{slug}', [App\Http\Controllers\ReviewController::class, 'show'])->name('reported.details');
+Route::get('ayuda', function(){
+  return view('help');
+})->name('page.help');
 
 // Internal use
 Route::post('/send-review', [App\Http\Controllers\ReviewController::class, 'store'])->name('send-review.store');
+Route::post('/search-review', [App\Http\Controllers\HomeController::class, 'searchProfile'])->name('search-reviews');

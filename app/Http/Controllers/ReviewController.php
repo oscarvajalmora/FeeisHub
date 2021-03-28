@@ -28,6 +28,9 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
+
+        // TODO: VERIFICAR QUE EL URL DEL PERFIL SEA EL MISMO DEL POST QUE COMPARTE
+
         $validated = $request->validate([
             'reporter_name' => 'required|min:5',
             'reporter_profile_link' => 'active_url|required|min:10',
@@ -63,7 +66,7 @@ class ReviewController extends Controller
             'reported_profile_id' => $reported_profile->id
         ]);
 
-        return redirect()->back()->with('success', 'Hemos publicado tu rebiiu. ¡Recuerda que puedes compartirla para ayudar a la comunidad!');
+        return redirect()->back()->with('success', '¡Hemos publicado tu feedback! <a href="' . route('reported.details', $reported_profile->slug) . '" class="alert-link">Revísalo aquí<a/>');
     }
 
     /**
