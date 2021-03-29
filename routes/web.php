@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('enviar-feedback', [App\Http\Controllers\ReviewController::class, 'create'])->name('send-review.form');
 Route::get('ver/{slug}', [App\Http\Controllers\ReviewController::class, 'show'])->name('reported.details');
-Route::get('ayuda', function(){
-  return view('help');
-})->name('page.help');
+Route::get('ayuda', [App\Http\Controllers\FaqController::class, 'index'])->name('page.help');
 
 // Internal use
 Route::post('/send-review', [App\Http\Controllers\ReviewController::class, 'store'])->name('send-review.store');
