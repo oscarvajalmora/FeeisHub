@@ -12,8 +12,8 @@
 <div class="row justify-content-center">
   <div class="col-12 col-md-8 col-lg-7">
     @if (session('error'))
-    <div class="alert alert-primary d-flex" role="alert">
-      <p class="align-self-center my-auto">	<span class="mr-2">&#128077;</span> El perfil que buscas no registra opiniones de otros usuarios. <a href="{{ route('page.help') . '#usuario-no-encontrado' }}" class="alert-link"> ¿Qué significa esto?</a></p>
+    <div class="alert alert-info d-flex" role="alert">
+      <p class="align-self-center my-auto">&#128077;&nbsp; El perfil que buscas no registra opiniones de otros usuarios. <a href="{{ route('page.help') . '#perfil-no-encontrado' }}" class="alert-link"> ¿Qué significa esto?</a></p>
     </div>
     @endif
     <form method="POST" action="{{ route('search-reviews') }}" class="form d-flex justify-content-center" autocomplete="off">
