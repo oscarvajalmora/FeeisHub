@@ -9,12 +9,22 @@
         @include('partials.loading')
     </div>
     
-    @if ($facebookGroupName && count($facebookGroups) && $activeSearch)
+    {{-- @if ($facebookGroupName && count($facebookGroups) && $activeSearch)
     <div class="alert alert-primary mt-3" role="alert">
         <span class="d-block py-2"> Sugerencias:</span>
         @foreach ($facebookGroups as $facebookGroup)
             <button class="btn btn-sm btn-light ml-1 mb-1" type="button" wire:click="setAsGroup({{ $facebookGroup }})">{{ $facebookGroup->name }}</button>
         @endforeach
     </div>
+    @endif --}}
+
+        
+    @if ($facebookGroupName && count($facebookGroups) && $activeSearch)
+    <div class="py-2">
+        @foreach ($facebookGroups as $facebookGroup)
+            <button class="btn btn-sm btn-secondary m-1" type="button" wire:click="setAsGroup({{ $facebookGroup }})">{{ $facebookGroup->name }}</button>
+        @endforeach
+    </div>
     @endif
+
 </div>

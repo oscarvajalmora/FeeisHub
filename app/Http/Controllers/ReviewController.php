@@ -36,12 +36,17 @@ class ReviewController extends Controller
             'reporter_name' => 'required|min:5',
             'reporter_profile_link' => 'active_url|required|min:10',
             'affected_name' => 'required|min:5',
-            'affected_profile_link' => 'active_url|required|min:10',
+            'reported_profile_link' => 'active_url|required|min:10',
             'fb_post_link' => 'active_url|required',
             'feedback' => 'required|integer',
             'commentary' => 'nullable|string|max:140',
         ]);
-        
+
+        // remove all slash at the end of the string
+        $request->reporter_profile_link = rtrim($request->reporter_profile_link, '/');
+        $request->reported_profile_link = rtrim($request->reported_profile_link, '/');
+        $request->fb_post_link = rtrim($request->fb_post_link, '/');
+
         do {
             $slug = 'R-' . Str::random(15);
             $resource = ReportedProfile::where('slug', $slug)->first();
@@ -49,7 +54,7 @@ class ReviewController extends Controller
         } while ($slug_exist == $slug);
 
         $reported_profile = ReportedProfile::firstOrCreate(
-            ['url' => $request->affected_profile_link],
+            ['url' => $request->reported_profile_link],
             ['slug' => $slug]
         );
 
