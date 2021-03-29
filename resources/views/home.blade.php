@@ -6,16 +6,16 @@
 <div class="row mt-5 mb-3 justify-content-center">
   <div class="col-12 col-md-10">
     <h1 class="text-center mb-5">Conoce la experiencia de otros usuarios con quienes compran y venden en tu comunidad de facebook</h1>
-    @if (session('error'))
-    <div class="alert alert-primary d-flex" role="alert">
-      <p class="align-self-center my-auto">	<span class="mr-2">&#128077;</span> El perfil que buscas no registra opiniones de otros usuarios. <a href="{{ route('page.help') . '#usuario-no-encontrado' }}" class="alert-link"> ¿Qué significa esto?</a></p>
-    </div>
-    @endif
   </div>
 </div>
 
 <div class="row justify-content-center">
   <div class="col-12 col-md-8 col-lg-7">
+    @if (session('error'))
+    <div class="alert alert-primary d-flex" role="alert">
+      <p class="align-self-center my-auto">	<span class="mr-2">&#128077;</span> El perfil que buscas no registra opiniones de otros usuarios. <a href="{{ route('page.help') . '#usuario-no-encontrado' }}" class="alert-link"> ¿Qué significa esto?</a></p>
+    </div>
+    @endif
     <form method="POST" action="{{ route('search-reviews') }}" class="form d-flex justify-content-center" autocomplete="off">
       <div class="input-group input-group-lg">
         @csrf

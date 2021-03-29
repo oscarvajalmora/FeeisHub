@@ -17,7 +17,9 @@ class HomeController extends Controller
             'url' => 'required|active_url|min:15'
         ]);
 
-        $reported_profile = ReportedProfile::where('url', $validated['url'])->first();
+        $urlCleaned = rtrim($validated['url'], '/');
+
+        $reported_profile = ReportedProfile::where('url', $urlCleaned)->first();
 
         if($reported_profile){
             return redirect()->route('reported.details', $reported_profile->slug);

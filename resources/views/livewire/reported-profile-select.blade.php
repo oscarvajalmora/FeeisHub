@@ -1,7 +1,6 @@
 <div class="form-floating mb-3">
     <input type="url" name="reported_profile_link" placeholder="URL del perfil de facebook" id="affecterProfileLink" class="form-control @error('reported_profile_link') is-invalid @enderror" required value="{{ old('reported_profile_link') }}" wire:model.debounce.500ms="url">
     <label for="">* URL del perfil de facebook</label>
-    <div id="reporterProfileLinkHelp" class="form-text">Debes copiar toda la URL. Ejemplo: https://facebook.com/nombreDeUsuario</div>
 
     @error('reported_profile_link')
       <div id="affecterProfileLinkFeedback" class="invalid-feedback">{{ $message }}</div>
