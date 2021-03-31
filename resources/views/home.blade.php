@@ -19,7 +19,7 @@
     <form method="POST" action="{{ route('search-reviews') }}" class="form d-flex justify-content-center" autocomplete="off">
       <div class="input-group input-group-lg">
         @csrf
-        <input id="url" type="text" name="url" class="form-control @error('url') is-invalid @enderror" placeholder="Pega aquí la URL del perfil de facebook" aria-label="Recipient's username" aria-describedby="button-addon2" value="{{ old('url') }}" style="border-radius: .25rem 0 0 .25rem" required autofocus>
+        <input id="url" type="text" name="url" class="form-control @error('url') is-invalid @enderror" placeholder="Pega aquí la URL del perfil de facebook" value="{{ old('url') }}" style="border-radius: .25rem 0 0 .25rem" required autofocus>
         <button class="btn d-flex bg-light" type="submit" style="border-radius: 0 .25rem .25rem 0; border-color: #ced4da"><span class="material-icons mx-auto my-auto">search</span></button>
         @error('url')
         <div id="urlFeedback" class="invalid-feedback">{{ $message }}</div>
