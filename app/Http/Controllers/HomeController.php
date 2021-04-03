@@ -22,7 +22,7 @@ class HomeController extends Controller
 
         // save search
         ProfileSearch::create([
-            'url' => $validated['url']
+            'url' => urlCleaned
         ]);
 
         $reported_profile = ReportedProfile::where('url', $urlCleaned)->first();
