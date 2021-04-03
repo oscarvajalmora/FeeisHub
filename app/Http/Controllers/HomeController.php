@@ -18,12 +18,12 @@ class HomeController extends Controller
             'url' => 'required|active_url|min:15'
             ]);
             
+        $urlCleaned = rtrim($validated['url'], '/');
+
         // save search
         ProfileSearch::create([
             'url' => $validated['url']
         ]);
-
-        $urlCleaned = rtrim($validated['url'], '/');
 
         $reported_profile = ReportedProfile::where('url', $urlCleaned)->first();
 
