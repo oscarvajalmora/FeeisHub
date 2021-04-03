@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ReportedProfile;
+use App\Models\ProfileSearch;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,11 @@ class HomeController extends Controller
 
         $validated = $request->validate([
             'url' => 'required|active_url|min:15'
+            ]);
+            
+        // save search
+        ProfileSearch::create([
+            'url' => $validated['url']
         ]);
 
         $urlCleaned = rtrim($validated['url'], '/');
