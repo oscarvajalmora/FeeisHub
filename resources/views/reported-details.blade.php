@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
-@section('page-title', 'Conoce las rebiius de este perfil')
+{{-- SEO metadata --}}
+@section('page-title', 'Conoce las opiniones de este perfil | FeeisHub')
+@section('page-description', 'Recopilamos las experiencias de vendedores y compradores de Facebook con otros usuarios y te ayudamos a tomar una mejor desición para tu siguiente compra o venta.')
+{{-- /SEO metadata --}}
 
+{{-- Page content --}}
 @section('page-content')
 <div class="row mb-5">
   <h2 class="mb-3 p-3">1. Detalles del perfil</h2>
@@ -36,7 +40,6 @@
     </div>
   </div>
 </div>
-
 <div class="row">
   <h2 class="mb-3 p-3">2. Feedback de los usuarios</h2>
   @foreach ($reported->reviews as $review)
@@ -59,7 +62,9 @@
   @endforeach
 </div>
 @endsection
+{{-- /Page content --}}
 
+{{-- Scripts --}}
 @section('js')
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -68,3 +73,4 @@
   });
 </script>
 @endsection
+{{-- /Scripts --}}
