@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
-@section('page-title', 'Somos una comunidad que apoya a los compradores online')
+{{-- SEO metadata --}}
+@section('page-title', 'Comunidad colaborativa para compradores y vendedores de Facebook | FeeisHub')
+@section('page-description', 'Recopilamos las experiencias de vendedores y compradores de Facebook con otros usuarios y te ayudamos a tomar una mejor desición para tu siguiente compra o venta.')
+{{-- /SEO metadata --}}
 
+{{-- Page content --}}
 @section('page-content')
 <div class="row mt-5 mb-3 justify-content-center">
   <div class="col-12 col-md-10">
@@ -30,3 +34,4 @@
 </div>
 
 @endsection
+{{-- /Page content --}}
