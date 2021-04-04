@@ -37,7 +37,7 @@ class ProfileSearch extends Notification
     public function toSlack($notifiable)
     {
         return (new SlackMessage)
-            ->from('Ghost', ':ghost:')
+            ->from('FeeisHub Web', ':robot_face:')
             ->to('#bots')
             ->content("New profile search for " . $this->url);
     }

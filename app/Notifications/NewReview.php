@@ -40,7 +40,7 @@ class NewReview extends Notification
         $review = $this->review;
 
         return (new SlackMessage)
-            ->from('Ghost', ':ghost:')
+            ->from('FeeisHub Web', ':robot_face:')
             ->to('#bots')
             ->content("New feedback received! \nFrom: " . $review['reporter_name'] . "\nTo: " . $review['affected_name'] . " \nFeedback: " . ($review['feedback'] ? 'Positive' : 'Negative') . "\n<" . $review['detail_url'] . "|See details here>");
     }
