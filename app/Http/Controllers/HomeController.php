@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ReportedProfile;
 use App\Models\ProfileSearch;
+use App\Notifications\ProfileSearch as ProfileSearchNotify;
 
 class HomeController extends Controller
 {
@@ -20,11 +21,14 @@ class HomeController extends Controller
             
         $urlCleaned = rtrim($validated['url'], '/');
 
+        
         // save search
-        ProfileSearch::create([
+        $profile_search = ProfileSearch::create([
             'url' => $urlCleaned
-        ]);
-
+            ]);
+        
+        $profile_search->notify(new ProfileSearchNotify($urlCleaned));
+            
         $reported_profile = ReportedProfile::where('url', $urlCleaned)->first();
 
         if($reported_profile){

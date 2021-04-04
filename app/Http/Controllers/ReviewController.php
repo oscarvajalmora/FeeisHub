@@ -7,6 +7,7 @@ use App\Models\Review;
 use App\Models\ReportedProfile;
 use App\Models\FacebookGroup;
 use Illuminate\Support\Str;
+use App\Notifications\NewReview;
 
 class ReviewController extends Controller
 {
@@ -72,8 +73,12 @@ class ReviewController extends Controller
             'commentary' => $request->commentary,
             'reported_profile_id' => $reported_profile->id,
             'facebook_group_id' => $facebook_group ? $facebook_group->id : null
-        ]);
+        ]);  
 
+        $notification_data = $review->toArray();
+        $notification_data['detail_url'] = route('reported.details', $reported_profile->slug);
+
+        $review->notify(new NewReview($notification_data));
         return redirect()->back()->with('success', '¡Hemos publicado tu feedback! <a href="' . route('reported.details', $reported_profile->slug) . '" class="alert-link">Revísalo aquí<a/>');
     }
 
