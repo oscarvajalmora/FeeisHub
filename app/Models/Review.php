@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Review extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'reporter_name',
@@ -21,8 +22,14 @@ class Review extends Model
         'facebook_group_id'
     ];
 
-    public function facebookGroup(){
+    public function facebookGroup()
+    {
         return $this->belongsTo(FacebookGroup::class);
+    }
+
+    public function routeNotificationForSlack($notification)
+    {
+        return env('SLACK_WEBHOOK_URL');
     }
 
 }
